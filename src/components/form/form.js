@@ -74,9 +74,9 @@ const Form = () => {
       {data?.response && (
         <div css={transitionEffect}>
           <label>State</label>
-          <input css={inputClass} type="text" onChange={(e) => setData({...data, stateName: e,target,value})} value={data.response.stateName} />
+          <input css={inputClass} type="text" onChange={(e) => setData({...data, stateName: e.target.value})} value={data.response.stateName} />
           <label>City</label>
-          <input css={inputClass} type="text" onChange={(e) => setData({...data, city: e,target,value})} value={data.response.city} />
+          <input css={inputClass} type="text" onChange={(e) => setData({...data, city: e.target.value})} value={data.response.city} />
         </div>
       )}
       {
