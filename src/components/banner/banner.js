@@ -1,4 +1,4 @@
-import React, { useState, useMemo, Fragment } from 'react';
+import React, { useState, Fragment } from 'react';
 
 import { Banners } from '../../constants/banner';
 
@@ -16,7 +16,8 @@ const Button = styled.button(
     border: 'none',
     margin: '2px',
     color: '#000',
-    border: '1px solid #000'
+    border: '1px solid #000',
+    cursor: 'pointer'
   },
   props => ({
     background: props.current.name === props.active.name && props.current.color,
