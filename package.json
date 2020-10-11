@@ -4,7 +4,10 @@
   "description": "WSJ wines",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --open"
+    "start": "webpack-dev-server --open",
+    "build": "webpack --mode production",
+    "predeploy": "npm build",
+    "deploy": "gh-pages -d dist"
   },
   "babel": {
     "presets": [
@@ -22,7 +25,7 @@
   "bugs": {
     "url": "https://github.com/sarunkumar88/wine-app/issues"
   },
-  "homepage": "https://github.com/sarunkumar88/wine-app#readme",
+  "homepage": "https://sarunkumar88.github.io/wine-app",
   "devDependencies": {
     "@babel/core": "^7.11.6",
     "@babel/preset-env": "^7.11.5",
@@ -30,6 +33,7 @@
     "babel-loader": "^8.1.0",
     "css-loader": "^4.3.0",
     "file-loader": "^6.1.1",
+    "gh-pages": "^3.1.0",
     "html-webpack-plugin": "^4.5.0",
     "style-loader": "^2.0.0",
     "url-loader": "^4.1.1",
