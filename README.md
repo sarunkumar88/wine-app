@@ -21,7 +21,10 @@ Inside the newly created project, you can run:
 Runs the app in development mode.<br>
 Open [http://localhost:8080](http://localhost:8080) to view it in the browser.
 
-** Now you can see the landing page similar to the example**
+Or, the page can be visited in the following url
+[https://sarunkumar88.github.io/wine-app/]
+
+**Now you can see the landing page similar to the example**
 
 **Product Listing**
 
