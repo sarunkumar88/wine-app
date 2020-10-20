@@ -41,7 +41,8 @@ const Form = () => {
   const [ zip, setZip ] = useState('');
   const [ data, setData ] = useState({});
   const [ message, setMessage ] = useState(undefined);
-
+  const [ ctMessage, setCTMessage ] = useState(undefined);
+  const CTMessage = `Upon completion of this form, your order will be forwarded to The Wine Cellar, located in Wallingford, CT for processing and shipping.`;
   
   useEffect(() => {
     setMessage('');
@@ -55,9 +56,13 @@ const Form = () => {
 
     if(!isNaN(zip) && zip.length === 5) {
       setMessage('');
+      
       fetch(`https://www.wsjwine.com/api/address/zipcode/${zip}`)
         .then(handleErrors)
-        .then(response => setData(response))
+        .then(response => { 
+          setData(response); 
+          /^06/.test(zip) ? setCTMessage(CTMessage): setCTMessage('');
+        })
         .catch(error => setMessage(error.message))
 
     } else {
@@ -71,17 +76,19 @@ const Form = () => {
       <label>Zipcode</label>
       <input css={inputClass} type="text" maxLength="5" value={zip} onChange={(e) => setZip(e.target.value)} />
       {message && <div css={error}>{message}</div> }
-      {data?.response && (
-        <div css={transitionEffect}>
-          <label>State</label>
-          <input css={inputClass} type="text" onChange={(e) => setData({...data.response, stateName: e.target.value})} value={data.response.stateName} />
-          <label>City</label>
-          <input css={inputClass} type="text" onChange={(e) => setData({...data.response, city: e.target.value})} value={data.response.city} />
-        </div>
-      )}
       {
-        data?.response?.stateCreateMsg && (
-        <div css={warningMessage}>{data.response.stateCreateMsg}</div>
+        data?.response && (
+          <div css={transitionEffect}>
+            <label>State</label>
+            <input css={inputClass} type="text" readOnly={true} value={data.response.stateName} />
+            <label>City</label>
+            <input css={inputClass} type="text" readOnly={true} value={data.response.city} />
+          </div>
+        )
+      }
+      {
+        (data?.response && ctMessage) && (
+          <div css={warningMessage}>{ctMessage}</div>
         )
       }
     </Fragment>
