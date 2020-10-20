@@ -32,6 +32,6 @@ You can able to see products loaded from api
 
 **Fetching dynamic data using zipcode**
 
-When you enter the zipcode it will list the state and city values in the input element.
-For `NY` it will show warning message
+When you enter the zipcode it will list the state and city values in the input element with readonly property.
+For `CT` postal code it will show an additional message
 For other states message will not be appear
